@@ -3,7 +3,6 @@
 #include <string.h>
 #include <algorithm>
 
-#
 
 
 int main(){
