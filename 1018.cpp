@@ -9,8 +9,8 @@ using namespace std;
 
 
 
-int n,m,c1,c2;
-int teams[N];
+int cmax,n,sp,m;
+int bikes[N];
 int edge[N][N];
 int dist[N];
 bool used[N];
@@ -35,36 +35,36 @@ void Dijkstra(int s,int d){
 				dist[i]=edge[index][i]+dist[index];
 	}
 }
-int pathnum=0,maxnum=-1;
-void dfs(int s,int d,int curdis,int curnum){
-	if(s==d){
-		if(curdis==dist[d]){
-			pathnum++;
-			if(curnum>maxnum)
-				maxnum=curnum;
-		}
-		return;
-	}
-	if(curdis>=dist[d])
-		return;
-	for(int i=0;i!=n;i++)
-		if(!used[i]&&edge[s][i]!=-1&&curdis+edge[s][i]<=dist[d]){
-			used[i]=true;
-			int tcurdis=curdis+edge[s][i];
-			dfs(i,d,tcurdis,curnum+teams[i]);
-			used[i]=false;
-		}
-	return;
-}
+//int pathnum=0,maxnum=-1;
+//void dfs(int s,int d,int curdis,int curnum){
+//	if(s==d){
+//		if(curdis==dist[d]){
+//			pathnum++;
+//			if(curnum>maxnum)
+//				maxnum=curnum;
+//		}
+//		return;
+//	}
+//	if(curdis>=dist[d])
+//		return;
+//	for(int i=0;i!=n;i++)
+//		if(!used[i]&&edge[s][i]!=-1&&curdis+edge[s][i]<=dist[d]){
+//			used[i]=true;
+//			int tcurdis=curdis+edge[s][i];
+//			dfs(i,d,tcurdis,curnum+bikes[i]);
+//			used[i]=false;
+//		}
+//	return;
+//}
 
 
 int main()
 {
-    scanf("%d %d %d %d", &n, &m, &c1, &c2);
+    scanf("%d %d %d %d", &cmax, &n, &sp, &m);
 	for(int i=0;i!=n;i++){
 		int t;
 		scanf("%d",&t);
-		teams[i]=t;
+		bikes[i]=t;
 	}
 	for(int i=0;i<N;i++)
 		for(int j=0;j<N;j++)
@@ -76,10 +76,12 @@ int main()
 		edge[b][a]=c;
 	}
 	memset(used,0,sizeof(used));
-	Dijkstra(c1,c2);
+	Dijkstra(0,sp);
+	printf("%d\n",dist[sp]);
 	memset(used,0,sizeof(used));
-	used[c1]=true;
-	dfs(c1,c2,0,teams[c1]);
-	printf("%d %d\n",pathnum,maxnum);
+	//used[c1]=true;
+	//dfs(c1,c2,0,teams[c1]);
+	//printf("%d %d\n",pathnum,maxnum);
+	system("PAUSE");
     return 0;
 }
