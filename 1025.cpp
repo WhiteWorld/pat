@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <algorithm>
 using namespace std;
-#define N 30005
+#define N 40005
 
 int n,k;
 
