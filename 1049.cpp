@@ -1,9 +1,9 @@
-#include<iostream>
-#include<string.h>
-#include<sstream>
-#include<vector>
+#include <iostream>
+#include <string.h>
+#include <sstream>
+#include <vector>
 #include <cmath>
-#include<algorithm>
+#include <algorithm>
 using namespace std;
 
 char a[20];
