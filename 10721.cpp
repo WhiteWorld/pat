@@ -48,11 +48,16 @@ int main(){
 		dist[bn][an]=c;
 	}
 
+	
+	
 	for(int k=1;k<=n+m;k++)
-		for(int i=1;i<=n+m;i++)
+		for(int i=1;i<=n+m;i++){
+			if(dist[k][i]==INF)continue;
 			for(int j=1;j<=n+m;j++)
 				if(dist[i][k]!=INF&&dist[k][j]!=INF&&(dist[i][k]+dist[k][j]<dist[i][j]))
 					dist[i][j]=dist[i][k]+dist[k][j];
+		}
+
 	int Max;
 	Max=-1;
 	int cnt=-1;
